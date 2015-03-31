@@ -176,6 +176,9 @@ Layer:
             where area < 100000
             and z(!scale_denominator!) >= 14
             and geometry && !bbox!
+          union all
+          select geometry, ogc_fid as osm_id from water_polygons
+            where geometry && !bbox!
         ) AS data
       type: postgis
       user: postgres
