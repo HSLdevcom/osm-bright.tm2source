@@ -124,57 +124,57 @@ Layer:
           union all
           select geometry, osm_id from osm_waterareas
             where area < 5000000000 and area >= 1500000000
-            and z(!scale_denominator!) >= 2
+            and z(!scale_denominator!) >= 1
             and geometry && !bbox!
           union all
           select geometry, osm_id from osm_waterareas
             where area < 1500000000 and area >= 500000000
-            and z(!scale_denominator!) >= 5
+            and z(!scale_denominator!) >= 2
             and geometry && !bbox!
           union all
           select geometry, osm_id from osm_waterareas
             where area < 500000000 and area >= 100000000
-            and z(!scale_denominator!) >= 6
+            and z(!scale_denominator!) >= 3
             and geometry && !bbox!
           union all
           select geometry, osm_id from osm_waterareas
             where area < 100000000 and area >= 40000000
-            and z(!scale_denominator!) >= 7
+            and z(!scale_denominator!) >= 4
             and geometry && !bbox!
           union all
           select geometry, osm_id from osm_waterareas
             where area < 40000000 and area >= 20000000
-            and z(!scale_denominator!) >= 8
+            and z(!scale_denominator!) >= 5
             and geometry && !bbox!
           union all
           select geometry, osm_id from osm_waterareas
             where area < 20000000 and area >= 10000000
-            and z(!scale_denominator!) >= 9
+            and z(!scale_denominator!) >= 6
             and geometry && !bbox!
           union all
           select geometry, osm_id from osm_waterareas
             where area < 10000000 and area >= 5000000
-            and z(!scale_denominator!) >= 10
+            and z(!scale_denominator!) >= 7
             and geometry && !bbox!
           union all
           select geometry, osm_id from osm_waterareas
             where area < 5000000 and area >= 1000000
-            and z(!scale_denominator!) >= 11
+            and z(!scale_denominator!) >= 8
             and geometry && !bbox!
           union all
           select geometry, osm_id from osm_waterareas
             where area < 1000000 and area >= 500000
-            and z(!scale_denominator!) >= 12
+            and z(!scale_denominator!) >= 9
             and geometry && !bbox!
           union all
           select geometry, osm_id from osm_waterareas
             where area < 500000 and area >= 100000
-            and z(!scale_denominator!) >= 13
+            and z(!scale_denominator!) >= 10
             and geometry && !bbox!
           union all
           select geometry, osm_id from osm_waterareas
             where area < 100000
-            and z(!scale_denominator!) >= 14
+            and z(!scale_denominator!) >= 11
             and geometry && !bbox!
           union all
           select geometry, ogc_fid as osm_id from water_polygons
@@ -331,13 +331,13 @@ Layer:
           select geometry, osm_id, oneway, type, 'major_rail' as class from
             osm_roads where bridge = 0 and tunnel = 0 and type in ('rail',
             'monorail', 'narrow_gauge', 'subway', 'tram')
-            and z(!scale_denominator!) >= 12
+            and z(!scale_denominator!) >= 10
             and geometry && !bbox!
           union all
           select geometry, osm_id, oneway, type, 'minor_rail' as class from
             osm_roads where bridge = 0 and tunnel = 0 and type in ('funicular',
             'light_rail', 'preserved')
-            and z(!scale_denominator!) >= 15
+            and z(!scale_denominator!) >= 12
             and geometry && !bbox!
           /* TODO aerialway, golf */
         ) AS data
@@ -693,15 +693,8 @@ Layer:
           select geometry, osm_id, name, name as name_en, type,
             null as capital, 'SE' as ldir, 1 as localrank, null as scalerank
             from osm_places
-            where type = 'village' and z(!scale_denominator!) >= 10
+            where type in ('hamlet', 'suburb','neighbourhood', 'village') and z(!scale_denominator!) >= 10
             and geometry && !bbox!
-          union all
-          select geometry, osm_id, name, name as name_en, type,
-            null as capital, 'SE' as ldir, 1 as localrank, null as scalerank
-            from osm_places
-            where type in ('hamlet', 'suburb','neighbourhood') and
-              z(!scale_denominator!) >= 12
-              and geometry && !bbox!
         ) AS data
       type: postgis
       user: postgres
@@ -904,73 +897,73 @@ Layer:
           select point as geometry, osm_id,
             name, name as name_en, area from osm_waterareas
             where area >= 5000000000
-            and z(!scale_denominator!) >= 5
+            and z(!scale_denominator!) >= 3
             and geometry && !bbox!
           union all
           select point as geometry, osm_id,
             name, name as name_en, area from osm_waterareas
             where area < 5000000000 and area >= 1500000000
-            and z(!scale_denominator!) >= 5
+            and z(!scale_denominator!) >= 4
             and geometry && !bbox!
           union all
           select point as geometry, osm_id,
             name, name as name_en, area from osm_waterareas
             where area < 1500000000 and area >= 500000000
-            and z(!scale_denominator!) >= 8
+            and z(!scale_denominator!) >= 5
             and geometry && !bbox!
           union all
           select point as geometry, osm_id,
             name, name as name_en, area from osm_waterareas
             where area < 500000000 and area >= 100000000
-            and z(!scale_denominator!) >= 9
+            and z(!scale_denominator!) >= 6
             and geometry && !bbox!
           union all
           select point as geometry, osm_id,
             name, name as name_en, area from osm_waterareas
             where area < 100000000 and area >= 40000000
-            and z(!scale_denominator!) >= 10
+            and z(!scale_denominator!) >= 7
             and geometry && !bbox!
           union all
           select point as geometry, osm_id,
             name, name as name_en, area from osm_waterareas
             where area < 40000000 and area >= 20000000
-            and z(!scale_denominator!) >= 11
+            and z(!scale_denominator!) >= 8
             and geometry && !bbox!
           union all
           select point as geometry, osm_id,
             name, name as name_en, area from osm_waterareas
             where area < 20000000 and area >= 10000000
-            and z(!scale_denominator!) >= 12
+            and z(!scale_denominator!) >= 9
             and geometry && !bbox!
           union all
           select point as geometry, osm_id,
             name, name as name_en, area from osm_waterareas
             where area < 10000000 and area >= 5000000
-            and z(!scale_denominator!) >= 13
+            and z(!scale_denominator!) >= 10
             and geometry && !bbox!
           union all
           select point as geometry, osm_id,
             name, name as name_en, area from osm_waterareas
             where area < 5000000 and area >= 1000000
-            and z(!scale_denominator!) >= 14
+            and z(!scale_denominator!) >= 11
             and geometry && !bbox!
           union all
           select point as geometry, osm_id,
             name, name as name_en, area from osm_waterareas
             where area < 1000000 and area >= 500000
-            and z(!scale_denominator!) >= 15
+            and z(!scale_denominator!) >= 12
             and geometry && !bbox!
           union all
           select point as geometry, osm_id,
             name, name as name_en, area from osm_waterareas
             where area < 500000 and area >= 100000
-            and z(!scale_denominator!) >= 16
+            and z(!scale_denominator!) >= 13
             and geometry && !bbox!
           union all
           select point as geometry, osm_id,
             name, name as name_en, area from osm_waterareas
             where area < 100000
-            and z(!scale_denominator!) >= 17
+            and z(!scale_denominator!) >= 14
             and geometry && !bbox!
         ) AS data
       type: postgis
