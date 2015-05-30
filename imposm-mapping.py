@@ -62,9 +62,9 @@ class Highway(LineStrings):
         ('z_order', WayZOrder()),
         ('access', String()),
     )
-    field_filter = (
-        ('area', Bool()),
-    )
+    #field_filter = (
+    #    ('area', Bool()),
+    #)
 
 places = Points(
     name = 'places',
