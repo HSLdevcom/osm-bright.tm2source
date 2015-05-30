@@ -258,7 +258,7 @@ Layer:
       extent: -20037508.34,-20037508.34,20037508.34,20037508.34
       geometry_field: ''
       geometry_table: ''
-      host: ''
+      host: localhost
       key_field: osm_id
       max_size: 512
       password: postgres
