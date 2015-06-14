@@ -12,6 +12,7 @@ CREATE INDEX osm_amenities_type_idx ON osm_amenities(type);
 CREATE INDEX osm_motorways_type_idx ON osm_motorways(type);
 CREATE INDEX osm_mainroads_type_idx ON osm_mainroads(type);
 CREATE INDEX osm_minorroads_type_idx ON osm_minorroads(type);
+CREATE INDEX osm_wayareas_type_idx ON osm_wayareas(type);
 CREATE INDEX osm_railways_type_idx ON osm_railways(type);
 CREATE INDEX osm_motorways_bridge_idx ON osm_motorways(bridge);
 CREATE INDEX osm_mainroads_bridge_idx ON osm_mainroads(bridge);

@@ -62,9 +62,20 @@ class Highway(LineStrings):
         ('z_order', WayZOrder()),
         ('access', String()),
     )
-    #field_filter = (
-    #    ('area', Bool()),
-    #)
+    field_filter = (
+        ('area', Bool()),
+    )
+
+class HighwayArea(Polygons):
+    fields = (
+        ('tunnel', Bool()),
+        ('bridge', Bool()),
+        ('oneway', Direction()),
+        ('ref', String()),
+        ('layer', Integer()),
+        ('z_order', WayZOrder()),
+        ('access', String()),
+    )
 
 places = Points(
     name = 'places',
@@ -173,6 +184,40 @@ minorroads = Highway(
             'unclassified',
             'residential',
     )}
+)
+
+wayareas = HighwayArea(
+    name = 'wayareas',
+    mapping = {
+        'highway': (
+            'motorway',
+            'motorway_link',
+            'trunk',
+            'trunk_link',
+            'primary',
+            'primary_link',
+            'secondary',
+            'secondary_link',
+            'tertiary',
+            'tertiary_link',
+            'road',
+            'path',
+            'track',
+            'service',
+            'footway',
+            'bridleway',
+            'cycleway',
+            'steps',
+            'pedestrian',
+            'living_street',
+            'unclassified',
+            'residential',
+        ),
+        'area': (
+            'yes',
+            'true'
+        )
+    }
 )
 
 transport_points = Points(
@@ -304,6 +349,14 @@ aeroways = LineStrings(
         'aeroway': (
             'runway',
             'taxiway',
+    )}
+)
+
+aerowayareas = Polygons(
+    name = 'aerowayareas',
+    mapping = {
+        'aeroway': (
+            'apron',
     )}
 )
 
